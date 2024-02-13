@@ -29,3 +29,34 @@ var chunk = function(arr, size) {
     return chunks;
 };
 
+/* Or without using slice method */
+
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array}
+ */
+var chunk2 = function (arr, size) {
+    if(!arr.length) {
+      return [];
+  }
+  if (arr.length < size) {
+    return [arr];
+  }
+  
+  const result = [];
+  let subArray = [];
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    subArray.push(element);
+    if (subArray.length === size) {
+      result.push(subArray);
+      subArray = [];
+    }
+  }
+  if (subArray.length) {
+    result.push(subArray);
+  }
+  return result;
+};
+
