@@ -34,8 +34,8 @@ function deleteCookie(cname) {
 }
 
 // Read cookie
-function getCookie(cname) {
-    let name = cname + "=";
+function getCookie(name) {
+  /*  let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
     for(let i = 0; i <ca.length; i++) {
@@ -47,7 +47,11 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-    return "";
+    return ""; */
+
+    const cookieRegex = new RegExp('(^|; )' + name + '=([^;]*)');
+    const match = document.cookie.match(cookieRegex);
+    return match ? match[2] : null;
 }
 
 // Set cookie consent
